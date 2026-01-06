@@ -1,0 +1,511 @@
+/* styles.css */
+
+/* Import Modern Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Reset and General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f4f8;
+    overflow-x: hidden;
+}
+
+/* CSS Variables for Theme */
+:root {
+    --primary-color: #007bff; /* Blue for electrical theme */
+    --secondary-color: #00bfff;
+    --accent-color: #ffff00; /* Yellow for sparks */
+    --background-color: #f0f4f8;
+    --text-color: #333;
+    --light-text: #fff;
+    --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --curve: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* For bouncy animations */
+}
+
+/* Header and Navigation */
+header {
+    background: linear-gradient(135deg, var(--primary-color), #004085);
+    color: var(--light-text);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: var(--transition);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--light-text);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    color: var(--light-text);
+    text-align: center;
+    padding: 15rem 2rem;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-in-out;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.8);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Softer overlay */
+    z-index: -1;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: slideInDown 1s var(--curve);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    animation: slideInUp 1s var(--curve);
+}
+
+.cta-button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    color: var(--light-text);
+    padding: 1.2rem 3rem;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    animation: bounceIn 1s var(--curve);
+}
+
+.cta-button:hover {
+    transform: translateY(-5px) rotate(2deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* Services Section */
+.services {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: wave-svg; /* Placeholder for wave SVG background */
+    z-index: -1;
+}
+
+.services h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    color: var(--primary-color);
+}
+
+.services h2::after {
+    content: '';
+    width: 100px;
+    height: 3px;
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) skew(20deg);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.service-item {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 40px 20px 40px 20px; /* Irregular curves */
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: left;
+    transform: rotate(-1deg);
+}
+
+.service-item:hover {
+    transform: translateY(-15px) rotate(0deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.service-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.service-item p {
+    color: #666;
+}
+
+/* Areas and Hours Sections */
+.areas, .hours {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 50px 30px 50px 30px; /* Curved edges */
+    box-shadow: var(--shadow);
+}
+
+.areas h2, .hours h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.areas ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.areas li {
+    background: linear-gradient(135deg, var(--primary-color), #004085);
+    color: var(--light-text);
+    padding: 1rem 2rem;
+    border-radius: 30px 15px 30px 15px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.areas li:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+.hours p {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+/* About Section */
+.about {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    background: var(--background-color);
+    border-radius: 40px;
+}
+
+.about h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.about p {
+    max-width: 800px;
+    margin: 1rem auto;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Work Section */
+.work {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.work h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.work-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 30px 50px 30px 50px; /* Curved variation */
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.work-item:hover {
+    transform: translateY(-10px) rotate(-2deg);
+}
+
+.work-item img {
+    width: 100%;
+    display: block;
+    transition: var(--transition);
+}
+
+.work-item:hover img {
+    transform: scale(1.1) rotate(2deg);
+}
+
+/* Contact Section */
+.contact {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 50px 30px 50px 30px;
+    box-shadow: var(--shadow);
+}
+
+.contact h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.contact form {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.contact label {
+    text-align: left;
+    font-weight: 600;
+}
+
+.contact input, .contact textarea {
+    padding: 1.2rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.contact input:focus, .contact textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+}
+
+.contact button {
+    background: linear-gradient(135deg, var(--primary-color), #004085);
+    color: var(--light-text);
+    padding: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.contact button:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: var(--shadow);
+}
+
+.contact-info p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #333, #444);
+    color: var(--light-text);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero {
+        padding: 12rem 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary-color), #004085);
+        padding: 1rem 0;
+        gap: 1rem;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 10rem 1rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .services, .areas, .hours, .about, .work, .contact {
+        padding: 0 1rem;
+    }
+
+    .service-item {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 1rem 2rem;
+    }
+}
